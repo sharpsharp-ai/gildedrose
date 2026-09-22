@@ -4,8 +4,8 @@ agent: test-autor
 ---
 Bring das Verhalten von `GildedRose.updateQuality()` unter Test. Bereich: $ARGUMENTS (leer heißt: alles).
 
-Skill characterization-tests, hier eingefügt:
-@.opencode/skills/characterization-tests/SKILL.md
+Skill characterization-test, hier eingefügt:
+@.opencode/skills/characterization-test/SKILL.md
 
 Der Legacy-Code:
 @src/main/java/de/sharpsharp/gildedrose/GildedRose.java

@@ -23,26 +23,31 @@ und lädt die Bibliotheken. Rechtsklick auf `src/test/java` → Run 'All Tests'.
 
 ## Mit opencode arbeiten
 
-Das Repo bringt opencode eine Rolle mit: `test-autor` schreibt Characterization Tests und darf nur unter
-`src/test` schreiben. Nichts installieren: im Projektordner `opencode --agent test-autor` starten (oder in
-IntelliJ den Session-Modus `test-autor` wählen), dann kennt es den Command und bleibt in der Rolle.
+Das Repo bringt opencode eine Rolle mit: `test-autor` schreibt Tests und darf nur unter `src/test` schreiben.
+Zwei Commands, zwei Ansätze: Der Approval-Test ist Brute Force, er friert die Ausgabe über ein Raster aus
+Eingaben in einer Datei ein. Der Characterization Test hält je Verzweigung ein Verhalten fest und gibt ihm
+einen Namen. Nichts installieren: im Projektordner `opencode --agent test-autor` starten (oder in IntelliJ
+den Session-Modus `test-autor` wählen), dann kennt es die Commands und bleibt in der Rolle.
 
 ```text
-/charakterisiere                     alles Verhalten von updateQuality unter Test bringen
-/charakterisiere Backstage passes    nur diesen Bereich
+/approval-test                              Golden Master: Raster aus Waren und Grenzwerten, genehmigt als Datei
+/characterization-test                      je Verzweigung ein Test, Name = beobachtete Regel
+/characterization-test Backstage passes     nur diesen Bereich
 ```
 
 | Datei | Wirkung |
 |---|---|
 | `AGENTS.md` | Befehle, Struktur, Regeln. Liest jede Rolle in jeder Session |
 | `opencode.json` | die Rolle `test-autor` mit ihren Rechten, die Bash-Whitelist |
-| `.opencode/commands/charakterisiere.md` | der Command; lesbares Markdown, das ist der Prompt |
-| `.opencode/skills/characterization-tests/SKILL.md` | zwölf Regeln für Characterization Tests |
+| `.opencode/commands/*.md` | `/approval-test`, `/characterization-test`; lesbares Markdown, das ist der Prompt |
+| `.opencode/skills/approval-test/SKILL.md` | sieben Regeln und das Muster für den Golden Master |
+| `.opencode/skills/characterization-test/SKILL.md` | zwölf Regeln für Characterization Tests |
 | `scripts/unabgedeckt.sh` | nicht erreichte Zeilen und Verzweigungen aus dem JaCoCo-Bericht |
+| `scripts/approve.sh` | macht aus `*.received.txt` die genehmigte `*.approved.txt` |
 
 | Rolle | Darf ändern | Bash |
 |---|---|---|
-| `test-autor` | nur `src/test/java/` | mvn, `scripts/unabgedeckt.sh`, ls, cat, grep, git status/diff/log |
+| `test-autor` | nur `src/test/java/` | mvn, `scripts/unabgedeckt.sh`, `scripts/approve.sh`, ls, cat, grep, git status/diff/log |
 
 ## Struktur
 

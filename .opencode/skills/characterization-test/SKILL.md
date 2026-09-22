@@ -1,5 +1,5 @@
 ---
-name: characterization-tests
+name: characterization-test
 description: Zwölf Regeln für Characterization Tests, die Legacy-Code so festhalten, wie er ist, damit man ihn gefahrlos umbauen kann
 ---
 # Characterization Tests
