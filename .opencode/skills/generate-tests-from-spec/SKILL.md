@@ -1,5 +1,5 @@
 ---
-name: spec-test
+name: generate-tests-from-spec
 description: Tests aus dem Anforderungsdokument ableiten, je Satz Normalfall, Schwellen, Ränder, Kollisionen und Offene Fragen; der Code bleibt zu, rot ist ein Fund
 ---
 # Spec-Tests aus dem Anforderungsdokument

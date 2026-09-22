@@ -20,7 +20,7 @@
 - Wie die Regeln sein sollten, steht in `GildedRoseKata.md`. Was der Code tut, entscheidet der Code.
 
 ## Arbeitsweise
-- Drei Netze für den Umbau: `/approval-test` friert die Ausgabe über ein Raster ein (Regeln: `.opencode/skills/approval-test/SKILL.md`), `/characterization-test` hält je Verzweigung ein Verhalten mit Namen fest (Regeln: `.opencode/skills/characterization-test/SKILL.md`). Beide beschreiben, was der Code tut, nicht, was er tun sollte. `/spec-test` leitet aus `GildedRoseKata.md` ab, was der Code soll, ohne den Rumpf zu lesen (Regeln: `.opencode/skills/spec-test/SKILL.md`); rot ist dort ein Fund.
+- Drei Netze für den Umbau: `/approval-test` friert die Ausgabe über ein Raster ein (Regeln: `.opencode/skills/approval-test/SKILL.md`), `/characterization-test` hält je Verzweigung ein Verhalten mit Namen fest (Regeln: `.opencode/skills/characterization-test/SKILL.md`). Beide beschreiben, was der Code tut, nicht, was er tun sollte. `/generate-tests-from-spec` leitet aus `GildedRoseKata.md` ab, was der Code soll, ohne den Rumpf zu lesen (Regeln: `.opencode/skills/generate-tests-from-spec/SKILL.md`); rot ist dort ein Fund.
 - Produktivcode bleibt unverändert, solange er nicht unter Test ist.
 - Nach jedem Test `mvn -q verify`.
 - Am Ende drei Zeilen: geändert, Ergebnis von `mvn -q verify` mit der Zusammenfassung aus `scripts/unabgedeckt.sh GildedRose`, Beobachtungen.

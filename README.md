@@ -34,8 +34,8 @@ den Session-Modus `test-autor` wählen), dann kennt es die Commands und bleibt i
 /approval-test                              Golden Master: Raster aus Waren und Grenzwerten, genehmigt als Datei
 /characterization-test                      je Verzweigung ein Test, Name = beobachtete Regel
 /characterization-test Backstage passes     nur diesen Bereich
-/spec-test                                  Tests aus GildedRoseKata.md, der Code bleibt zu
-/spec-test Conjured                         nur die neue Anforderung; die Tests sind rot, das ist der Auftrag
+/generate-tests-from-spec                   Tests aus GildedRoseKata.md, der Code bleibt zu
+/generate-tests-from-spec Conjured          nur die neue Anforderung; die Tests sind rot, das ist der Auftrag
 ```
 
 | Datei | Wirkung |
@@ -45,7 +45,7 @@ den Session-Modus `test-autor` wählen), dann kennt es die Commands und bleibt i
 | `.opencode/commands/*.md` | `/approval-test`, `/characterization-test`; lesbares Markdown, das ist der Prompt |
 | `.opencode/skills/approval-test/SKILL.md` | sieben Regeln und das Muster für den Golden Master |
 | `.opencode/skills/characterization-test/SKILL.md` | zwölf Regeln für Characterization Tests |
-| `.opencode/skills/spec-test/SKILL.md` | zwölf Regeln für Spec-Tests aus dem Anforderungsdokument, mit der Ableitung an einem Satz |
+| `.opencode/skills/generate-tests-from-spec/SKILL.md` | zwölf Regeln für Spec-Tests aus dem Anforderungsdokument, mit der Ableitung an einem Satz |
 | `scripts/unabgedeckt.sh` | nicht erreichte Zeilen und Verzweigungen aus dem JaCoCo-Bericht |
 | `scripts/approve.sh` | macht aus `*.received.txt` die genehmigte `*.approved.txt` |
 | `scripts/regeln.sh` | nummeriert die Sätze aus `GildedRoseKata.md`, nennt Regeln ohne Test und Schwellen ohne Nachbar-Test |

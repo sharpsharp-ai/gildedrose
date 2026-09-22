@@ -4,8 +4,8 @@ agent: test-autor
 ---
 Leite die Tests aus dem Anforderungsdokument ab. Bereich: $ARGUMENTS (leer heißt: das bestehende System, alle Regeln vor „This requires an update to our system". `Conjured` heißt: nur die neue Anforderung).
 
-Skill spec-test, hier eingefügt:
-@.opencode/skills/spec-test/SKILL.md
+Skill generate-tests-from-spec, hier eingefügt:
+@.opencode/skills/generate-tests-from-spec/SKILL.md
 
 Das Anforderungsdokument:
 @GildedRoseKata.md
