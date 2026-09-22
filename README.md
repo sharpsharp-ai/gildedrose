@@ -49,6 +49,19 @@ den Session-Modus `test-autor` wählen), dann kennt es die Commands und bleibt i
 |---|---|---|
 | `test-autor` | nur `src/test/java/` | mvn, `scripts/unabgedeckt.sh`, `scripts/approve.sh`, ls, cat, grep, git status/diff/log |
 
+## Clean-Code-Report
+
+Ein Blick auf den Code, ohne Gnade und ohne Gate: Der Bericht sucht die klassischen Smells (lange Methoden,
+tiefe Verschachtelung, magische Zahlen, doppelter Code, kryptische Namen, toter Code, Tests ohne Namen)
+und macht daraus Punkte, einen Rang und eine Monster-Galerie. Vor dem Umbau einmal laufen lassen, danach wieder.
+
+```bash
+java tools/CleanCodeReport.java        # schreibt target/clean-code-report.html
+```
+
+Nichts zu installieren, JDK 17 reicht. Jeder Lauf merkt sich den Punktestand in `.clean-code-history`,
+der Bericht zeigt den Verlauf.
+
 ## Struktur
 
 | Ort | Inhalt |
