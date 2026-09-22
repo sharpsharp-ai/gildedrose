@@ -21,6 +21,10 @@
       "./scripts/approve.sh*": "allow",
       "bash scripts/approve.sh*": "allow",
       "sh scripts/approve.sh*": "allow",
+      "scripts/regeln.sh*": "allow",
+      "./scripts/regeln.sh*": "allow",
+      "bash scripts/regeln.sh*": "allow",
+      "sh scripts/regeln.sh*": "allow",
       "ls*": "allow",
       "pwd": "allow",
       "cat *": "allow",
@@ -39,7 +43,7 @@
   },
   "agent": {
     "test-autor": {
-      "description": "Schreibt Characterization Tests unter src/test. Ändert keinen Produktivcode.",
+      "description": "Schreibt Tests unter src/test: Approval, Characterization, Spec. Ändert keinen Produktivcode.",
       "mode": "primary",
       "steps": 60,
       "permission": {
