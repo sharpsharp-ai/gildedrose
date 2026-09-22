@@ -24,15 +24,18 @@ und lädt die Bibliotheken. Rechtsklick auf `src/test/java` → Run 'All Tests'.
 ## Mit opencode arbeiten
 
 Das Repo bringt opencode eine Rolle mit: `test-autor` schreibt Tests und darf nur unter `src/test` schreiben.
-Zwei Commands, zwei Ansätze: Der Approval-Test ist Brute Force, er friert die Ausgabe über ein Raster aus
+Drei Commands, drei Ansätze: Der Approval-Test ist Brute Force, er friert die Ausgabe über ein Raster aus
 Eingaben in einer Datei ein. Der Characterization Test hält je Verzweigung ein Verhalten fest und gibt ihm
-einen Namen. Nichts installieren: im Projektordner `opencode --agent test-autor` starten (oder in IntelliJ
+einen Namen. Beide beschreiben, was der Code tut. Der Spec-Test liest die Kata-Beschreibung statt den Code
+und prüft, was der Code soll: je Satz Normalfall, Schwellen, Ränder und Kollisionen. Nichts installieren: im Projektordner `opencode --agent test-autor` starten (oder in IntelliJ
 den Session-Modus `test-autor` wählen), dann kennt es die Commands und bleibt in der Rolle.
 
 ```text
 /approval-test                              Golden Master: Raster aus Waren und Grenzwerten, genehmigt als Datei
 /characterization-test                      je Verzweigung ein Test, Name = beobachtete Regel
 /characterization-test Backstage passes     nur diesen Bereich
+/spec-test                                  Tests aus GildedRoseKata.md, der Code bleibt zu
+/spec-test Conjured                         nur die neue Anforderung; die Tests sind rot, das ist der Auftrag
 ```
 
 | Datei | Wirkung |
@@ -42,19 +45,22 @@ den Session-Modus `test-autor` wählen), dann kennt es die Commands und bleibt i
 | `.opencode/commands/*.md` | `/approval-test`, `/characterization-test`; lesbares Markdown, das ist der Prompt |
 | `.opencode/skills/approval-test/SKILL.md` | sieben Regeln und das Muster für den Golden Master |
 | `.opencode/skills/characterization-test/SKILL.md` | zwölf Regeln für Characterization Tests |
+| `.opencode/skills/spec-test/SKILL.md` | zwölf Regeln für Spec-Tests aus dem Anforderungsdokument, mit der Ableitung an einem Satz |
 | `scripts/unabgedeckt.sh` | nicht erreichte Zeilen und Verzweigungen aus dem JaCoCo-Bericht |
 | `scripts/approve.sh` | macht aus `*.received.txt` die genehmigte `*.approved.txt` |
+| `scripts/regeln.sh` | nummeriert die Sätze aus `GildedRoseKata.md`, nennt Regeln ohne Test und Schwellen ohne Nachbar-Test |
 
 | Rolle | Darf ändern | Bash |
 |---|---|---|
-| `test-autor` | nur `src/test/java/` | mvn, `scripts/unabgedeckt.sh`, `scripts/approve.sh`, ls, cat, grep, git status/diff/log |
+| `test-autor` | nur `src/test/java/` | mvn, `scripts/unabgedeckt.sh`, `scripts/approve.sh`, `scripts/regeln.sh`, ls, cat, grep, git status/diff/log |
 
 ## Clean-Code-Report
 
-Ein Blick auf den Code, ohne Gnade und ohne Gate: Der Bericht sucht die klassischen Smells (lange Methoden,
-tiefe Verschachtelung, magische Zahlen, doppelter Code, kryptische Namen, toter Code, Tests ohne Namen)
-und macht daraus Punkte, einen Rang und eine Monster-Galerie. Links die Funde, rechts der Code wie in der IDE,
-ein Klick springt zur Zeile.
+Ein Blick auf den Code, ohne Gnade und ohne Gate: Der Bericht liest den Code mit dem Java-Parser des JDK,
+sucht 30 Code Smells aus sechs Familien (Bloaters, Object-Orientation Abusers, Dispensables, Couplers,
+Readability, Test Smells) und macht daraus Punkte, einen Rang, einen Radar je Familie und eine Monster-Galerie.
+Links die Funde, rechts der Code wie in der IDE, ein Klick springt zur Zeile; das Regelwerk mit jeder Schwelle
+und jedem Refactoring steht im Bericht.
 
 ```bash
 java .opencode/skills/clean-code-report/CleanCodeReport.java   # schreibt target/clean-code-report.html
