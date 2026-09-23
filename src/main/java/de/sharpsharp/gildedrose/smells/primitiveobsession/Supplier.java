@@ -25,8 +25,10 @@ package de.sharpsharp.gildedrose.smells.primitiveobsession;
  * 4. Dasselbe mit der Inlandsprüfung in Postage: Extract Method isDomestic, F6 nach Address,
  *    Convert To Instance Method.
  * 5. Cursor auf den Klassennamen Address, ⌥⏎ / Alt+Enter, Convert to record. Nach jedem Schritt mvn -q verify.
- * 6. In derselben Richtung weiter: Country als enum, dann gibt es "Austria" nicht mehr. Und die fünf Getter
- *    in Supplier per Safe Delete ⌘⌫ / Alt+Delete entfernen, sobald niemand mehr einzeln an die Teile will.
+ * 6. Der Konstruktor: Introduce Parameter Object mit „Use existing class“ Address, aus sechs Strings wird
+ *    Supplier(name, address); IntelliJ schreibt die Aufrufer um, auch den Test. Die fünf Getter in Supplier
+ *    per Safe Delete ⌘⌫ / Alt+Delete entfernen, sobald niemand mehr einzeln an die Teile will.
+ * 7. In derselben Richtung weiter: Country als enum, dann gibt es "Austria" nicht mehr.
  */
 public class Supplier {
     private final String name;

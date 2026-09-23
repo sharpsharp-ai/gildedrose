@@ -95,8 +95,9 @@ und welche IntelliJ-Refactorings den Weg gehen, mit Shortcuts für Mac und Windo
 | Feature Envy | `featureenvy` | `Cashier` | Move Instance Method (F6) |
 
 `/clean-code-report nur das Package smells` zeigt, was der Report davon sieht; Shotgun Surgery und Inappropriate
-Intimacy misst er nicht. Der Branch `smells-geloest` enthält den Zustand nach den Rezepten. Die Tests sind dieselben,
-bis auf die Aufrufe, die IntelliJ bei einer Signaturänderung mit umschreibt.
+Intimacy misst er nicht. Im Bericht über das ganze Projekt fehlen die Beispiele (`.clean-code-ignore`), damit die Kata
+die Kata bleibt. Der Branch `smells-geloest` enthält den Zustand nach den Rezepten. Die Tests sind dieselben, bis auf
+die Aufrufe, die IntelliJ bei einer Signaturänderung mit umschreibt.
 
 ## Struktur
 

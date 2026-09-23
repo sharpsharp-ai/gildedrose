@@ -26,8 +26,9 @@ import java.util.List;
  *    supplierCity mit Change Signature entfernen.
  * 3. Cursor auf OrderLine, ⌥⏎ / Alt+Enter, Convert to record; die Rechnung quantity mal unitPriceInCents zieht
  *    als totalInCents() mit um (Extract Method ⌥⌘M / Ctrl+Alt+M, dann F6). Ebenso Delivery.
- * 4. Das Flag: record wird privat, darüber zwei öffentliche Methoden recordPaid und recordOpen, die mit true und
- *    false rufen. Die Aufrufer wechseln per Change Signature oder von Hand, es sind wenige.
+ * 4. Das Flag: den Textaufbau markieren, Extract Method ⌥⌘M / Ctrl+Alt+M entry. Dann zwei öffentliche Methoden
+ *    recordPaid und recordOpen, die entry nutzen; record verschwindet per Safe Delete, sobald die Aufrufer
+ *    umgestellt sind. Die wechseln von Hand, es sind wenige.
  * 5. Wächst ein Konstruktor so: Refactor | Replace Constructor with Builder.
  * 6. Was bleibt: quantity und unitPriceInCents sind in OrderLine noch zwei int nebeneinander. Wer auch das
  *    absichern will, gibt dem Preis einen Typ. Das ist Primitive Obsession, das Nachbarbeispiel.
