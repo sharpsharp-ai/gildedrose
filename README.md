@@ -80,25 +80,6 @@ Nichts zu installieren, JDK 17 reicht. Jeder Lauf merkt sich den Punktestand in 
 der Bericht zeigt den Verlauf. Der Skill ist ein Ordner: `.opencode/skills/clean-code-report/` plus der
 Command lassen sich in jedes Java-Projekt kopieren.
 
-## Fünf Smells zum Üben
-
-Unter `src/main/java/de/sharpsharp/gildedrose/smells/` liegt je Smell ein kleines Beispiel aus dem Laden, mit Test.
-Das Rezept steht als Kommentar über der Klasse, die den Smell trägt: woran man ihn erkennt, wohin es gehen soll
-und welche IntelliJ-Refactorings den Weg gehen, mit Shortcuts für Mac und Windows.
-
-| Smell | Package | Klasse mit dem Rezept | Hauptwerkzeug in IntelliJ |
-|---|---|---|---|
-| Primitive Obsession | `primitiveobsession` | `Supplier` | Extract Delegate, Convert To Instance Method, Convert to record |
-| Inappropriate Intimacy | `inappropriateintimacy` | `Shelf` | Extract Method, Move Instance Method, Encapsulate Fields |
-| Long Parameter List | `longparameterlist` | `Ledger` | Introduce Parameter Object, Change Signature |
-| Shotgun Surgery | `shotgunsurgery` | `PriceTag` | Extract Constant, Move Members, Convert To Instance Method |
-| Feature Envy | `featureenvy` | `Cashier` | Move Instance Method (F6) |
-
-`/clean-code-report nur das Package smells` zeigt, was der Report davon sieht; Shotgun Surgery und Inappropriate
-Intimacy misst er nicht. Im Bericht über das ganze Projekt fehlen die Beispiele (`.clean-code-ignore`), damit die Kata
-die Kata bleibt. Der Branch `smells-geloest` enthält den Zustand nach den Rezepten. Die Tests sind dieselben, bis auf
-die Aufrufe, die IntelliJ bei einer Signaturänderung mit umschreibt.
-
 ## Struktur
 
 | Ort | Inhalt |
