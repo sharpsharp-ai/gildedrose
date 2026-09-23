@@ -14,7 +14,7 @@
 - `src/main/java/de/sharpsharp/gildedrose/GildedRose.java`: `updateQuality()` ist der Legacy-Code. `GildedRose.with(Item...)` baut den Laden.
 - `Item.java`: Name, `sellIn`, `quality`, mit Gettern und Settern. Bleibt unverändert.
 - `Main.java`: druckt einen Tag. Keine Regeln darin.
-- `src/test/java/de/sharpsharp/gildedrose/`: JUnit 4, Hamcrest, Mockito, ApprovalTests.
+- `src/test/java/de/sharpsharp/gildedrose/`: JUnit 4, Hamcrest, Mockito, ApprovalTests. 25 Tests aus der Original-Kata, je Warenart eine Klasse (`AGildedRoseItem`, `AnAgedBrie`, `ABackstagePass`, `TheHandOfRagnaros`), Namen und Grenzen in `TestConstants`; sie erreichen jede Zeile und jeden Zweig von `GildedRose`. Surefire führt jede Klasse unter `src/test` aus, der Name muss nicht auf `Test` enden.
 
 ## Fachliches
 - Waren: gewöhnliche, „Aged Brie", „Backstage passes to a TAFKAL80ETC concert", „Sulfuras, Hand of Ragnaros". Die Namen stehen wörtlich im Code.

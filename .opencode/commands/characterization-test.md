@@ -21,7 +21,7 @@ Vorgehen:
 2. Führe `mvn -q verify` aus, dann `scripts/unabgedeckt.sh GildedRose`. Das ist deine Liste.
 3. Je nicht erreichter Verzweigung ein Test in `src/test/java/de/sharpsharp/gildedrose/`: ein Item, ein Tag, beide Werte prüfen (`quality` und `sellIn`). Erst den erwarteten Wert hinschreiben, dann `mvn -q verify`. Ist der Test rot, prüfe, ob der Test das Richtige misst; wenn ja, übernimm den Ist-Wert und markiere die Stelle mit `// Beobachtung:` und einem Satz.
 4. Wiederhole 2 und 3, bis `scripts/unabgedeckt.sh GildedRose` keine Zeile mehr nennt. Danach die Grenzwerte aus Regel 5 des Skills, auch wenn die Abdeckung schon voll ist.
-5. Gruppiere die Tests je Warenart in eigene Klassen: `OrdinaryItemTest`, `AgedBrieTest`, `BackstagePassTest`, `SulfurasTest`. Namen wie im Skill. Der vorhandene Test aus `GildedRoseTest` zieht mit um; umziehen ist erlaubt, löschen nicht.
+5. Neue Tests kommen in die vorhandene Klasse der Warenart (`AGildedRoseItem`, `AnAgedBrie`, `ABackstagePass`, `TheHandOfRagnaros`), Namen wie dort und im Skill. Keine Parallelklassen; umziehen ist erlaubt, löschen nicht.
 
 Regeln:
 - Kein Produktivcode wird angefasst. Die Tests passen sich dem Code an, nie umgekehrt.

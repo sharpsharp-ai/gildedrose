@@ -70,6 +70,12 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.6.0</version>
+        <configuration>
+          <!-- Die Testklassen heißen nach dem Gegenstand (AnAgedBrie, TheHandOfRagnaros), nicht *Test. -->
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </configuration>
       </plugin>
       <plugin>
         <!-- Coverage report, no gate: mvn verify writes target/site/jacoco/index.html and jacoco.csv.

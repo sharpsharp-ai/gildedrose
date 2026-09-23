@@ -1,8 +1,9 @@
 # Gilded Rose Kata
 
-Legacy-Code ohne Tests: `GildedRose.updateQuality()` verändert jeden Tag Qualität und Restlaufzeit der Waren
-im Laden. Die Aufgabe steht in `GildedRoseKata.md`: „Conjured"-Waren einbauen, ohne das bestehende Verhalten
-zu ändern. Wer sicher umbauen will, bringt den Code zuerst unter Test.
+Legacy-Code mit Netz: `GildedRose.updateQuality()` verändert jeden Tag Qualität und Restlaufzeit der Waren
+im Laden. 25 Tests aus der Original-Kata, je Warenart eine Klasse, erreichen jede Zeile und jeden Zweig und sagen,
+was der Code tut. Die Aufgabe steht in `GildedRoseKata.md`: „Conjured"-Waren einbauen, ohne das bestehende Verhalten
+zu ändern. Wer das sauber machen will, baut vorher um, und das Netz sagt nach jedem Schritt, ob noch alles tut, was es tat.
 
 Fertig ist eine Änderung, wenn `mvn -q verify` ohne Ausgabe und mit Exit-Code 0 endet.
 
@@ -23,8 +24,9 @@ und lädt die Bibliotheken. Rechtsklick auf `src/test/java` → Run 'All Tests'.
 
 ## Mit opencode arbeiten
 
-Das Repo bringt opencode eine Rolle mit: `test-autor` schreibt Tests und darf nur unter `src/test` schreiben.
-Drei Commands, drei Ansätze: Der Approval-Test ist Brute Force, er friert die Ausgabe über ein Raster aus
+Das Repo bringt opencode zwei Rollen mit: `test-autor` schreibt Tests und darf nur unter `src/test` schreiben,
+`refactorer` baut um und darf nur unter `src/main` schreiben. Die 25 Tests sind ein Netz, aber eines aus dem Soll-Raum:
+Sulfuras kennen sie nur mit Qualität 80, Grenzwerte nur dort, wo die Regeln sie nennen. Drei Commands ergänzen es, drei Ansätze: Der Approval-Test ist Brute Force, er friert die Ausgabe über ein Raster aus
 Eingaben in einer Datei ein. Der Characterization Test hält je Verzweigung ein Verhalten fest und gibt ihm
 einen Namen. Beide beschreiben, was der Code tut. Der Spec-Test liest die Kata-Beschreibung statt den Code
 und prüft, was der Code soll: je Satz Normalfall, Schwellen, Ränder und Kollisionen. Steht das Netz, baut die Rolle
@@ -85,5 +87,5 @@ Command lassen sich in jedes Java-Projekt kopieren.
 | `src/main/java/de/sharpsharp/gildedrose/GildedRose.java` | der Legacy-Code |
 | `src/main/java/de/sharpsharp/gildedrose/Item.java` | gehört dem Goblin, bleibt unverändert |
 | `src/main/java/de/sharpsharp/gildedrose/Main.java` | ein Tag im Laden, druckt vorher und nachher |
-| `src/test/java/de/sharpsharp/gildedrose/` | die Tests; ApprovalTests liegt für einen Golden Master bereit |
+| `src/test/java/de/sharpsharp/gildedrose/` | 25 Tests aus der Original-Kata: `AGildedRoseItem`, `AnAgedBrie`, `ABackstagePass`, `TheHandOfRagnaros`, dazu `AItem` und `TestConstants`; ApprovalTests liegt für einen Golden Master bereit |
 | `GildedRoseKata.md` | die Aufgabe |
