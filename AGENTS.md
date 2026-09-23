@@ -5,6 +5,7 @@
 - `scripts/unabgedeckt.sh GildedRose`: Zeilen und Verzweigungen von `GildedRose`, die die Tests nicht erreichen. Nach jedem `mvn -q verify` neu.
 - `cat target/site/jacoco/jacoco.csv`: Zähler je Klasse, Spalten `BRANCH_MISSED` und `BRANCH_COVERED`.
 - `scripts/approve.sh`: macht aus `*.received.txt` unter `src/test` die genehmigte `*.approved.txt` (ApprovalTests).
+- `scripts/schritt.sh "<Refactoring>: <was>"`: ein Refactoring-Schritt. `mvn -q verify`; grün committet `src/main` mit der Botschaft, rot setzt `src/main` auf den letzten Commit zurück, mehr als 40 geänderte Zeilen lehnt es ab.
 - `scripts/regeln.sh`: nummeriert die Sätze aus `GildedRoseKata.md` (R1 bis Rn) und zählt je Regel die Tests, die sie als `// R<n>` nennen; je Zahl im Satz, ob die Tests auch den Nachbarwert als Eingabe benutzen.
 - `java .opencode/skills/clean-code-report/CleanCodeReport.java` (oder `/clean-code-report`): Clean-Code-Report nach `target/clean-code-report.html`, Punkte und Smells je Methode.
 - Verboten: Tests löschen oder mit `@Ignore` abschalten, `-DskipTests`, Änderungen an `pom.xml`, `.opencode/`, `AGENTS.md`, `opencode.json`.
@@ -21,6 +22,7 @@
 
 ## Arbeitsweise
 - Drei Netze für den Umbau: `/approval-test` friert die Ausgabe über ein Raster ein (Regeln: `.opencode/skills/approval-test/SKILL.md`), `/characterization-test` hält je Verzweigung ein Verhalten mit Namen fest (Regeln: `.opencode/skills/characterization-test/SKILL.md`). Beide beschreiben, was der Code tut, nicht, was er tun sollte. `/generate-tests-from-spec` leitet aus `GildedRoseKata.md` ab, was der Code soll, ohne den Rumpf zu lesen (Regeln: `.opencode/skills/generate-tests-from-spec/SKILL.md`); rot ist dort ein Fund.
+- Umbau nur mit Netz und nur über `/refactor-in-small-steps` (Rolle `refactorer`, Regeln: `.opencode/skills/refactor-in-small-steps/SKILL.md`): ein Refactoring je Commit über `scripts/schritt.sh`, rot heißt zurück, Tests bleiben unverändert.
 - Produktivcode bleibt unverändert, solange er nicht unter Test ist.
 - Nach jedem Test `mvn -q verify`.
 - Am Ende drei Zeilen: geändert, Ergebnis von `mvn -q verify` mit der Zusammenfassung aus `scripts/unabgedeckt.sh GildedRose`, Beobachtungen.

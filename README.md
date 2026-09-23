@@ -27,7 +27,8 @@ Das Repo bringt opencode eine Rolle mit: `test-autor` schreibt Tests und darf nu
 Drei Commands, drei Ansätze: Der Approval-Test ist Brute Force, er friert die Ausgabe über ein Raster aus
 Eingaben in einer Datei ein. Der Characterization Test hält je Verzweigung ein Verhalten fest und gibt ihm
 einen Namen. Beide beschreiben, was der Code tut. Der Spec-Test liest die Kata-Beschreibung statt den Code
-und prüft, was der Code soll: je Satz Normalfall, Schwellen, Ränder und Kollisionen. Nichts installieren: im Projektordner `opencode --agent test-autor` starten (oder in IntelliJ
+und prüft, was der Code soll: je Satz Normalfall, Schwellen, Ränder und Kollisionen. Steht das Netz, baut die Rolle
+`refactorer` um: ein Refactoring je Commit, `scripts/schritt.sh` committet grün und setzt rot zurück. Nichts installieren: im Projektordner `opencode --agent test-autor` starten (oder in IntelliJ
 den Session-Modus `test-autor` wählen), dann kennt es die Commands und bleibt in der Rolle.
 
 ```text
@@ -36,6 +37,8 @@ den Session-Modus `test-autor` wählen), dann kennt es die Commands und bleibt i
 /characterization-test Backstage passes     nur diesen Bereich
 /generate-tests-from-spec                   Tests aus GildedRoseKata.md, der Code bleibt zu
 /generate-tests-from-spec Conjured          nur die neue Anforderung; die Tests sind rot, das ist der Auftrag
+/refactor-in-small-steps                    Umbau unter Test, ein Refactoring je Commit, rot heißt zurück
+/refactor-in-small-steps Methoden unter 10 Zeilen   mit eigenem Ziel
 ```
 
 | Datei | Wirkung |
@@ -46,13 +49,16 @@ den Session-Modus `test-autor` wählen), dann kennt es die Commands und bleibt i
 | `.opencode/skills/approval-test/SKILL.md` | sieben Regeln und das Muster für den Golden Master |
 | `.opencode/skills/characterization-test/SKILL.md` | zwölf Regeln für Characterization Tests |
 | `.opencode/skills/generate-tests-from-spec/SKILL.md` | zwölf Regeln für Spec-Tests aus dem Anforderungsdokument, mit der Ableitung an einem Satz |
+| `.opencode/skills/refactor-in-small-steps/SKILL.md` | zehn Regeln und der Katalog fürs Refactoring in kleinen Schritten |
 | `scripts/unabgedeckt.sh` | nicht erreichte Zeilen und Verzweigungen aus dem JaCoCo-Bericht |
 | `scripts/approve.sh` | macht aus `*.received.txt` die genehmigte `*.approved.txt` |
 | `scripts/regeln.sh` | nummeriert die Sätze aus `GildedRoseKata.md`, nennt Regeln ohne Test und Schwellen ohne Nachbar-Test |
+| `scripts/schritt.sh` | ein Refactoring-Schritt: `mvn -q verify`, grün committet `src/main`, rot setzt es zurück, über 40 Zeilen lehnt es ab |
 
 | Rolle | Darf ändern | Bash |
 |---|---|---|
 | `test-autor` | nur `src/test/java/` | mvn, `scripts/unabgedeckt.sh`, `scripts/approve.sh`, `scripts/regeln.sh`, ls, cat, grep, git status/diff/log |
+| `refactorer` | nur `src/main/java/` | wie oben, dazu `scripts/schritt.sh`; `scripts/approve.sh` gesperrt, git schreibend nur über das Skript |
 
 ## Clean-Code-Report
 

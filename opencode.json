@@ -25,6 +25,10 @@
       "./scripts/regeln.sh*": "allow",
       "bash scripts/regeln.sh*": "allow",
       "sh scripts/regeln.sh*": "allow",
+      "scripts/schritt.sh*": "allow",
+      "./scripts/schritt.sh*": "allow",
+      "bash scripts/schritt.sh*": "allow",
+      "sh scripts/schritt.sh*": "allow",
       "ls*": "allow",
       "pwd": "allow",
       "cat *": "allow",
@@ -48,6 +52,20 @@
       "steps": 60,
       "permission": {
         "edit": { "*": "deny", "src/test/java/*": "allow" }
+      }
+    },
+    "refactorer": {
+      "description": "Baut Produktivcode unter src/main in kleinen, grünen Schritten um. Ändert keine Tests, committet nur über scripts/schritt.sh.",
+      "mode": "primary",
+      "steps": 80,
+      "permission": {
+        "edit": { "*": "deny", "src/main/java/*": "allow" },
+        "bash": {
+          "scripts/approve.sh*": "deny",
+          "./scripts/approve.sh*": "deny",
+          "bash scripts/approve.sh*": "deny",
+          "sh scripts/approve.sh*": "deny"
+        }
       }
     }
   }
