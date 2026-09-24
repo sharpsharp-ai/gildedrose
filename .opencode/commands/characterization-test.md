@@ -1,30 +1,28 @@
 ---
-description: Characterization Tests für GildedRose, bis jede Verzweigung und jeder Grenzwert unter Test ist
+description: Eine Methode mit Characterization Tests Schicht für Schicht unter Test bringen, bis jede Verzweigung und jeder Grenzwert festgehalten ist
 agent: test-autor
 ---
-Bring das Verhalten von `GildedRose.updateQuality()` unter Test. Bereich: $ARGUMENTS (leer heißt: alles).
+Bring eine Methode mit Characterization Tests unter Test. Methode: $ARGUMENTS
 
 Skill characterization-test, hier eingefügt:
 @.opencode/skills/characterization-test/SKILL.md
 
-Der Legacy-Code:
-@src/main/java/de/sharpsharp/gildedrose/GildedRose.java
+Produktivcode:
+!`find src/main -name '*.java' | sort`
 
 Vorhandene Tests:
-!`ls src/test/java/de/sharpsharp/gildedrose/`
+!`find src/test -name '*.java' | sort`
 
-Stand der Abdeckung (leer, wenn noch kein Bericht da ist; dann zuerst `mvn -q verify`):
-!`scripts/unabgedeckt.sh GildedRose 2>/dev/null`
+Stand der Abdeckung, leer, wenn noch kein Bericht da ist:
+!`scripts/unabgedeckt.sh 2>/dev/null | head -40`
 
 Vorgehen:
-1. Lies `GildedRose.java` ganz und die vorhandenen Tests. Notiere die Warenarten und die Grenzwerte, die der Code unterscheidet: die Namen, `sellIn` 11 und 6 und 0, `quality` 0 und 50.
-2. Führe `mvn -q verify` aus, dann `scripts/unabgedeckt.sh GildedRose`. Das ist deine Liste.
-3. Je nicht erreichter Verzweigung ein Test in `src/test/java/de/sharpsharp/gildedrose/`: ein Item, ein Tag, beide Werte prüfen (`quality` und `sellIn`). Erst den erwarteten Wert hinschreiben, dann `mvn -q verify`. Ist der Test rot, prüfe, ob der Test das Richtige misst; wenn ja, übernimm den Ist-Wert und markiere die Stelle mit `// Beobachtung:` und einem Satz.
-4. Wiederhole 2 und 3, bis `scripts/unabgedeckt.sh GildedRose` keine Zeile mehr nennt. Danach die Grenzwerte aus Regel 5 des Skills, auch wenn die Abdeckung schon voll ist.
-5. Neue Tests kommen in die vorhandene Klasse der Warenart (`AGildedRoseItem`, `AnAgedBrie`, `ABackstagePass`, `TheHandOfRagnaros`), Namen wie dort und im Skill. Keine Parallelklassen; umziehen ist erlaubt, löschen nicht.
+1. Steht oben keine Methode als `Klasse#methode`: frag, welche Methode es sein soll, nenne die Kandidaten aus dem Produktivcode und warte. Nichts lesen, nichts schreiben, bevor die Methode feststeht.
+2. Lies die Methode ganz und schreibe die Landkarte aus dem Skill als Text in deine Antwort, bevor du irgendeine Datei anlegst: Eingänge, Ausgänge, nummerierte Verzweigungen mit ihren Vergleichswerten.
+3. Grabe nach den Schichten im Skill, ein Test je Schritt: einen Test schreiben, `mvn -q verify`, dann `scripts/unabgedeckt.sh <Klasse>`, dann erst der nächste Test. Kein Patch mit mehreren Tests auf einmal, auch nicht am Anfang. Reihenfolge: geradeaus, dann Verzweigung für Verzweigung, jede Kante als Paar (beide Seiten), Schleifen mit null, einem und mehreren Elementen.
+4. Fertig nach der Liste im Skill. Am Ende: Anzahl der Tests, die Zeile „Zusammenfassung“ aus `scripts/unabgedeckt.sh <Klasse>`, die Landkarte mit dem Testnamen je Verzweigungsseite und je Kante, die Beobachtungen.
 
 Regeln:
 - Kein Produktivcode wird angefasst. Die Tests passen sich dem Code an, nie umgekehrt.
 - Keine Tests löschen, kein `@Ignore`.
-- Fertig ist erst, wenn `mvn -q verify` grün ist und `scripts/unabgedeckt.sh GildedRose` keine Zeile mehr nennt.
-- Am Ende: Anzahl Tests, die Zeile „Zusammenfassung" aus `scripts/unabgedeckt.sh GildedRose`, Liste der Beobachtungen (Verhalten, das von `GildedRoseKata.md` abweicht oder überrascht).
+- Neue Tests in die vorhandene Testklasse des Gegenstands, sonst eine neue Klasse, nach dem Gegenstand benannt.

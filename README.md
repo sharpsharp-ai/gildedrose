@@ -35,8 +35,8 @@ den Session-Modus `test-autor` wählen), dann kennt es die Commands und bleibt i
 
 ```text
 /approval-test                              Golden Master: Raster aus Waren und Grenzwerten, genehmigt als Datei
-/characterization-test                      je Verzweigung ein Test, Name = beobachtete Regel
-/characterization-test Backstage passes     nur diesen Bereich
+/characterization-test GildedRose#updateQuality   eine Methode Schicht für Schicht: je Verzweigung ein Test, Grenzwerte als Paar
+/characterization-test                      ohne Methode fragt es erst, welche
 /generate-tests-from-spec                   Tests aus GildedRoseKata.md, der Code bleibt zu
 /generate-tests-from-spec Conjured          nur die neue Anforderung; die Tests sind rot, das ist der Auftrag
 /refactor-in-small-steps                    Umbau unter Test, ein Refactoring je Commit, rot heißt zurück
@@ -49,7 +49,7 @@ den Session-Modus `test-autor` wählen), dann kennt es die Commands und bleibt i
 | `opencode.json` | die Rolle `test-autor` mit ihren Rechten, die Bash-Whitelist |
 | `.opencode/commands/*.md` | `/approval-test`, `/characterization-test`; lesbares Markdown, das ist der Prompt |
 | `.opencode/skills/approval-test/SKILL.md` | sieben Regeln und das Muster für den Golden Master |
-| `.opencode/skills/characterization-test/SKILL.md` | zwölf Regeln für Characterization Tests |
+| `.opencode/skills/characterization-test/SKILL.md` | Landkarte der Methode, acht Schichten zum Graben, acht Regeln; gilt für jede Methode in jedem Projekt |
 | `.opencode/skills/generate-tests-from-spec/SKILL.md` | zwölf Regeln für Spec-Tests aus dem Anforderungsdokument, mit der Ableitung an einem Satz |
 | `.opencode/skills/refactor-in-small-steps/SKILL.md` | zehn Regeln und der Katalog fürs Refactoring in kleinen Schritten |
 | `scripts/unabgedeckt.sh` | nicht erreichte Zeilen und Verzweigungen aus dem JaCoCo-Bericht |
@@ -87,5 +87,6 @@ Command lassen sich in jedes Java-Projekt kopieren.
 | `src/main/java/de/sharpsharp/gildedrose/GildedRose.java` | der Legacy-Code |
 | `src/main/java/de/sharpsharp/gildedrose/Item.java` | gehört dem Goblin, bleibt unverändert |
 | `src/main/java/de/sharpsharp/gildedrose/Main.java` | ein Tag im Laden, druckt vorher und nachher |
-| `src/test/java/de/sharpsharp/gildedrose/` | 25 Tests aus der Original-Kata: `AGildedRoseItem`, `AnAgedBrie`, `ABackstagePass`, `TheHandOfRagnaros`, dazu `AItem` und `TestConstants`; ApprovalTests liegt für einen Golden Master bereit |
+| `src/test/java/de/sharpsharp/gildedrose/` | 25 Tests aus der Original-Kata: `AGildedRoseItem`, `AnAgedBrie`, `ABackstagePass`, `TheHandOfRagnaros`, dazu `AItem` und `TestConstants` |
+| `src/test/java/de/sharpsharp/gildedrose/approval/` | die zwei Approval-Tests der Original-Kata mit ihren genehmigten Dateien, 19 feste und 20000 zufällige Waren mit festem Seed; wie im Original mit `@Ignore`, sie laufen grün, sobald das `@Ignore` fällt |
 | `GildedRoseKata.md` | die Aufgabe |
