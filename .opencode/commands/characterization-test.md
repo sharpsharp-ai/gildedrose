@@ -19,7 +19,7 @@ Stand der Abdeckung, leer, wenn noch kein Bericht da ist:
 Vorgehen:
 1. Steht oben keine Methode als `Klasse#methode`: frag, welche Methode es sein soll, nenne die Kandidaten aus dem Produktivcode und warte. Nichts lesen, nichts schreiben, bevor die Methode feststeht.
 2. Lies die Methode ganz und schreibe die Landkarte aus dem Skill als Text in deine Antwort, bevor du irgendeine Datei anlegst: Eingänge, Ausgänge, nummerierte Verzweigungen mit ihren Vergleichswerten.
-3. Grabe nach den Schichten im Skill, ein Test je Schritt: einen Test schreiben, `mvn -q verify`, dann `scripts/unabgedeckt.sh <Klasse>`, dann erst der nächste Test. Kein Patch mit mehreren Tests auf einmal, auch nicht am Anfang. Reihenfolge: geradeaus, dann Verzweigung für Verzweigung, jede Kante als Paar (beide Seiten), Schleifen mit null, einem und mehreren Elementen.
+3. Grabe nach den Schichten im Skill, ein Test je Schritt: einen Test schreiben, `mvn -q verify`, dann `scripts/unabgedeckt.sh <Klasse>`, in dieser Reihenfolge, sonst zeigt die Liste den alten Bericht. Dann erst der nächste Test. Kein Patch mit mehreren Tests auf einmal, auch nicht am Anfang. Reihenfolge: geradeaus, dann Verzweigung für Verzweigung, jede Kante als Paar (beide Seiten), Schleifen mit null, einem und mehreren Elementen.
 4. Fertig nach der Liste im Skill. Am Ende: Anzahl der Tests, die Zeile „Zusammenfassung“ aus `scripts/unabgedeckt.sh <Klasse>`, die Landkarte mit dem Testnamen je Verzweigungsseite und je Kante, die Beobachtungen.
 
 Regeln:
