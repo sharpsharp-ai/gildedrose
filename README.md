@@ -34,9 +34,9 @@ und prüft, was der Code soll: je Satz Normalfall, Schwellen, Ränder und Kollis
 den Session-Modus `test-autor` wählen), dann kennt es die Commands und bleibt in der Rolle.
 
 ```text
-/approval-test                              Golden Master: Raster aus Waren und Grenzwerten, genehmigt als Datei
+/approval-test GildedRose#updateQuality     Golden Master: Raster aus den Literalen der Methode, jede Kante mit Nachbarn, genehmigt als Datei
 /characterization-test GildedRose#updateQuality   eine Methode Schicht für Schicht: je Verzweigung ein Test, Grenzwerte als Paar
-/characterization-test                      ohne Methode fragt es erst, welche
+/approval-test, /characterization-test      ohne Methode nennen beide die Kandidaten und fragen erst, welche
 /generate-tests-from-spec                   Tests aus GildedRoseKata.md, der Code bleibt zu
 /generate-tests-from-spec Conjured          nur die neue Anforderung; die Tests sind rot, das ist der Auftrag
 /refactor-in-small-steps                    Umbau unter Test, ein Refactoring je Commit, rot heißt zurück
@@ -48,7 +48,7 @@ den Session-Modus `test-autor` wählen), dann kennt es die Commands und bleibt i
 | `AGENTS.md` | Befehle, Struktur, Regeln. Liest jede Rolle in jeder Session |
 | `opencode.json` | die Rolle `test-autor` mit ihren Rechten, die Bash-Whitelist |
 | `.opencode/commands/*.md` | `/approval-test`, `/characterization-test`; lesbares Markdown, das ist der Prompt |
-| `.opencode/skills/approval-test/SKILL.md` | sieben Regeln und das Muster für den Golden Master |
+| `.opencode/skills/approval-test/SKILL.md` | Landkarte der Methode, Werte je Eingang aus ihren Literalen, zehn Regeln und das Muster für den Golden Master; gilt für jede Methode in jedem Projekt |
 | `.opencode/skills/characterization-test/SKILL.md` | Landkarte der Methode, acht Schichten zum Graben, acht Regeln; gilt für jede Methode in jedem Projekt |
 | `.opencode/skills/generate-tests-from-spec/SKILL.md` | zwölf Regeln für Spec-Tests aus dem Anforderungsdokument, mit der Ableitung an einem Satz |
 | `.opencode/skills/refactor-in-small-steps/SKILL.md` | zehn Regeln und der Katalog fürs Refactoring in kleinen Schritten |
