@@ -1,0 +1,48 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "question": "deny",
+    "webfetch": "deny",
+    "websearch": "deny",
+    "external_directory": "deny",
+    "doom_loop": "deny",
+    "edit": {
+      "*": "allow",
+      "*opencode.json": "deny",
+      "*.opencode/*": "deny"
+    },
+    "bash": {
+      "*": "deny",
+      "mvn *": "allow",
+      "mvn *skipTests*": "deny",
+      "mvn *maven.test.skip*": "deny",
+      "java ../.opencode/skills/clean-code-report/CleanCodeReport.java*": "allow",
+      "../scripts/unabgedeckt.sh*": "allow",
+      "bash ../scripts/unabgedeckt.sh*": "allow",
+      "sh ../scripts/unabgedeckt.sh*": "allow",
+      "../scripts/approve.sh*": "allow",
+      "bash ../scripts/approve.sh*": "allow",
+      "sh ../scripts/approve.sh*": "allow",
+      "../scripts/regeln.sh*": "allow",
+      "bash ../scripts/regeln.sh*": "allow",
+      "sh ../scripts/regeln.sh*": "allow",
+      "../scripts/schritt.sh*": "allow",
+      "bash ../scripts/schritt.sh*": "allow",
+      "sh ../scripts/schritt.sh*": "allow",
+      "ls*": "allow",
+      "pwd": "allow",
+      "cat *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "wc *": "allow",
+      "grep *": "allow",
+      "rg *": "allow",
+      "find *": "allow",
+      "mkdir *": "allow",
+      "git status*": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "git show*": "allow"
+    }
+  }
+}

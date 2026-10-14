@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>de.sharpsharp</groupId>
+    <artifactId>katas</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>gildedrose</artifactId>
+  <name>Gilded Rose Kata</name>
+  <description>Legacy-Code unter Test bringen und umbauen: GildedRose.updateQuality()</description>
+
+  <build>
+    <plugins>
+      <plugin>
+        <!-- mvn -q compile exec:java prints one day in the shop -->
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.6.4</version>
+        <configuration>
+          <mainClass>de.sharpsharp.gildedrose.Main</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
